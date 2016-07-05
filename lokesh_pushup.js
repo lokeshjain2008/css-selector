@@ -255,7 +255,7 @@ var Selector = (function(window, document) {
       }
     }
 
-    var result = needsClassNames ? '' : nodeName;
+    var result = (needsClassNames && !needsNthChild)? '' : nodeName;
     if (isTargetNode && nodeName === "input" && node.getAttribute("type")
       && !node.getAttribute("id") && !node.getAttribute("class"))
       result += "[type=\"" + node.getAttribute("type") + "\"]";
