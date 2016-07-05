@@ -1,11 +1,10 @@
 # css-selector
----
 
 
 ## How to use.
----
 		
  1. include this script or better to include min file (dist/lokesh_pushup.min.js). 
+ 
  2. call 
   
   ```javascript
@@ -14,9 +13,9 @@
 
     
   ```
-  3. click on the page element. That's it. 
+ 3. click on the page element. That's it. 
 
-  4. If you want to stop seeing css-selectors on the page, you kill it.
+ 4. If you want to stop seeing css-selectors on the page, you kill it.
 
   ```javascript
 
@@ -24,28 +23,43 @@
 
   ```
 
-  **InDepth**
-  If you just want to use with other functions and control the output then you should use 
-    `calculteCssSelector` function.
+**InDepth**
+---
+- If you just want to use with other functions and control the output then you should use 
+`calculateCssSelector` function. as 
 
-   
+	```javascript
+		
+	  var cssSelectorForNode = Selector.calculateCssSelector(node);
 
-    
-    If you want lib. to display `CSS-Selector` on the page but want to handle they when to call or 
-    
-    where to add, then use
-    `displaySelector`
+	```
 
-   
 
-    
-    Use `activateSelector`. If you don't want to control and want to use working model.
-    you can disable it anytime. 
+- If you want lib. to display `CSS-Selector` on the page but want to handle they when to call or where to add, 
+ then use `displaySelector`. e.g. if you are using `jQuery`.
+
+ 	```javascript
+
+ 	$(document).ready(()=>{
+ 		$(document).on('click', Selector.displaySelector);
+ 	});				
+
+ 	```
+
+
+- Use `activateSelector`. If you don't want to control and want to use working model.
+you can disable it anytime. 
+
+	```javascript		
+
+		Selector.activateSelector()
+
+	```
 
 ---
 
 ### Notes:
----
+
 
 1. For more Read the codebase.
 refer file `loeksh_pushup.js`
