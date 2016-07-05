@@ -64,6 +64,22 @@ var Selector = (function(window, document) {
     }, '');
   }
 
+
+  /**
+   * For the early escape if we got our unique selector
+   * Inputs: (setps:<steps>)
+   * Output: (boolean)
+   */
+
+  function _isUnique(steps) {
+    var dupSteps = [],
+    selector='';
+    steps.forEach(function(step) { dupSteps.push(step)});
+    selector = dupSteps.reverse().join(' > ');
+    return document.querySelectorAll(selector).length === 1;
+  }
+
+
   /**
    * Public API
    * Inputs : (node:<HtmlElement>),
@@ -81,7 +97,7 @@ var Selector = (function(window, document) {
     while (contextNode) {
       step = Lib._cssPathStep(contextNode, contextNode === node);
       steps.push(step);
-      if (step.optimized) {
+      if (step.optimized || _isUnique(steps)) {
         break;
       }
       contextNode = contextNode.parentNode;
@@ -239,7 +255,7 @@ var Selector = (function(window, document) {
       }
     }
 
-    var result = nodeName;
+    var result = needsClassNames ? '' : nodeName;
     if (isTargetNode && nodeName === "input" && node.getAttribute("type")
       && !node.getAttribute("id") && !node.getAttribute("class"))
       result += "[type=\"" + node.getAttribute("type") + "\"]";
